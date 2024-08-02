@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { BookingProfile } from './BookingProfile';
 import { Filters } from './Filters';
@@ -24,6 +24,26 @@ export const Therapists = () => {
     issue: '',
   });
   const [showFilters, setShowFilters] = useState(false);
+  const filtersRef = useRef(null);
+
+
+  const handleClickOutside = (event) => {
+    if (filtersRef.current && !filtersRef.current.contains(event.target)) {
+      setShowFilters(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showFilters) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showFilters]);
+
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -84,7 +104,7 @@ export const Therapists = () => {
             </div>
           </div>
         </div>
-        {showFilters && <Filters onFilterChange={handleFilterChange} />}
+        {showFilters && <Filters onFilterChange={handleFilterChange} filtersRef={filtersRef} />}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredTherapists.map((therapist) => (
             <a href={`/therapists/${therapist.name}`} key={therapist.name}>

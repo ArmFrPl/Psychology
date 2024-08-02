@@ -15,6 +15,8 @@ import {BookingProfile} from "./BookingProfile";
 import {Blog} from "./Blog";
 import {SignUp} from "./SignUp";
 import {LogIn} from "./LogIn";
+import {UserProfile} from "./UserProfile";
+import {TherapistProfile} from "./TherapistProfile";
 
 function App() {
   const page = window.location.pathname.split('/')[1];
@@ -63,6 +65,14 @@ function App() {
       path: "/login",
       element: <LogIn />,
     },
+    {
+      path: "/userprof",
+      element: <UserProfile />
+    },
+    {
+      path: "/therprof",
+      element: <TherapistProfile />
+    }
 
   ]);
 

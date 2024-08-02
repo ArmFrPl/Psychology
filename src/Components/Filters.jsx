@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const Filters = ({ onFilterChange }) => {
+export const Filters = ({ onFilterChange, filtersRef }) => {
   const [availability, setAvailability] = useState(true);
   const [budget, setBudget] = useState('');
   const [therapy, setTherapy] = useState('');
@@ -24,7 +24,7 @@ export const Filters = ({ onFilterChange }) => {
   };
 
   return (
-    <div className="p-4 bg-[#362d64] rounded-3xl mb-6 w-80 text-white">
+    <div className="p-4 bg-[#362d64] rounded-3xl mb-6 w-80 absolute top-[230px] left-[140px] text-white" ref={filtersRef}>
       <div className="mb-4">
         <strong>Availability</strong>
         <div className='flex'>

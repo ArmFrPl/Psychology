@@ -3,7 +3,7 @@ instance_class: F2
 
 env_variables:
   DB_USER: dav
-  DB_PASS: 
+  DB_PASS: Davo-2001
   DB_NAME: mysql
   DB_PORT: 3306
   INSTANCE_HOST: 10.63.16.2

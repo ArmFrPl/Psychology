@@ -10,7 +10,8 @@ export const BookingProfile = () => {
     education: ["Bachelor’s degree in Psychology - YSU", "Master’s degree in Clinical Psychology - YSU"],
     sessions: "28",
     languages: ["Armenian", "English", "Russian"],
-    price: "30"
+    price: "30",
+    sessLength: "50"
   }
 
 
@@ -79,7 +80,7 @@ export const BookingProfile = () => {
             <button className="bg-[#43408f] text-white p-[15px] font-bold rounded-full hover:bg-[#2a2859] focus:outline-none focus:ring-2 focus:ring-[#2a2859] focus:ring-opacity-50">
               Book a session
             </button>
-            <p className="mt-2 text-[20px] text-[#362d64] font-alike">${person.price}/session (50 minutes)</p>
+            <p className="mt-2 text-[20px] text-[#362d64] font-alike">${person.price}/session ({person.sessLength} minutes)</p>
           </div>
         </div>
       </div>
