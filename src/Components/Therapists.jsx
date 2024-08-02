@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { useParams } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import { BookingProfile } from './BookingProfile';
 import { Filters } from './Filters';
 
@@ -107,7 +107,7 @@ export const Therapists = () => {
         {showFilters && <Filters onFilterChange={handleFilterChange} filtersRef={filtersRef} />}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredTherapists.map((therapist) => (
-            <a href={`/therapists/${therapist.name}`} key={therapist.name}>
+            <Link to={`/therapists/${therapist.name}`} key={therapist.name}>
               <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                 <img src={therapist.imgSrc} alt={therapist.name} className="w-full h-48 object-cover" />
                 <div className="p-4">
@@ -115,7 +115,7 @@ export const Therapists = () => {
                   <p className="text-gray-600">{therapist.rate}/session</p>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

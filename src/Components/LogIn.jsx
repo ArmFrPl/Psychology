@@ -1,6 +1,7 @@
 import React from "react";
 import '../Styles/Navbar.css';
 import {GoogleLogin} from "@react-oauth/google";
+import {Link} from "react-router-dom";
 
 export const LogIn = () => {
 
@@ -43,7 +44,7 @@ export const LogIn = () => {
                 <p className='mb-5'>Or</p>
                 <GoogleLogin onSuccess={responseMessage} onError={errorMessage} useOneTap={false} containerProps='height: 56px' text='continue_with' locale='en' width='320px' />
                 <p className='mt-6 text-xs text-gray-600 text-center'>{`Don't have an account yet?  `}
-                  <a href="/signup" className='text-[#7c8cfd]'>Sign Up</a>
+                  <Link to="/signup" className='text-[#7c8cfd]'>Sign Up</Link>
                 </p>
               </div>
             </div>

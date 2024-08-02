@@ -1,8 +1,8 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
 import '../Styles/Navbar.css'
-import {Navbar} from "./Navbar";
 import {AboutUs} from "./AboutUs";
+import {Link} from "react-router-dom";
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
@@ -20,10 +20,10 @@ export const Header = () => {
               {t('header.par')}
             </p>
             <div className="flex mt-16">
-              <a href="/therapists"
+              <Link to="/therapists"
                  className="uppercase py-2.5 px-4 rounded-2xl w-40 bg-white border-2 border-transparent text-[#362D64] text-sm font-bold mr-4 hover:bg-[#362D64] hover:text-white">
                 {t('header.button')}
-              </a>
+              </Link>
             </div>
           </div>
           <div className="hidden sm:block relative">

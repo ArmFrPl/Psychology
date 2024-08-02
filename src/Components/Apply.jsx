@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {Link} from "react-router-dom";
 
 export const Apply = () => {
   const { t } = useTranslation();
@@ -170,11 +171,11 @@ export const Apply = () => {
                      className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all">{t('applicationForm.refuseDemographics')}</label>
             </div>
           </div>
-          <a href="/joinus/thankyou">
+          <Link to="/joinus/thankyou">
             <button className="bg-[#7EC6AD] hover:bg-[#6dad97] w-[140px] h-[54px] text-white font-bold py-2 px-4 rounded-xl mt-10">
               {t('applicationForm.applyButton')}
             </button>
-          </a>
+          </Link>
         </form>
       </div>
     </div>

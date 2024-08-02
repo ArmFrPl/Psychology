@@ -1,16 +1,36 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import '../Styles/Navbar.css';
-import {GoogleLogin} from "@react-oauth/google";
-import { useNavigate } from "react-router-dom";
+import {GoogleLogin, useGoogleLogin} from "@react-oauth/google";
+import {Link, useNavigate} from "react-router-dom";
+import {getGoogleUser, setIsLoggedIn, setStatus} from "../actions";
+import {useDispatch} from "react-redux";
+import {GET_STATUS, GET_USER, SET_LOGGED_IN} from '../actions/types'
 
 export const SignUp = () => {
+  const [prof, setProf] = useState({})
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(
+    () => {
+      console.log(prof.access_token)
+      if(prof.access_token){
+        getGoogleUser(prof).then(user =>{
+          dispatch({type: GET_USER, payload: user.payload})
+          dispatch({type: SET_LOGGED_IN, payload: true})
+          dispatch({type: GET_STATUS, payload: 'user'})
+          navigate('/userprof')
+        });
+      }
+    },
+    [prof]
+  );
 
 
-  const responseMessage = (response) => {
-    console.log(response);
+  const responseMessage = (codeResponse) => {
+    setProf(codeResponse);
   };
   const errorMessage = (error) => {
     console.log(error);
@@ -27,17 +47,26 @@ export const SignUp = () => {
 
   const handleLogin = () => {
     if(email === userProf.email && password === userProf.password){
+      setIsLoggedIn().then(() => dispatch({type: SET_LOGGED_IN, payload: true}))
+      setStatus().then(() => dispatch({type: GET_STATUS, payload: 'user'}))
       navigate('/userProf')
-      alert('You are logged in as a user')
     }
     else if(email === therProf.email && password === therProf.password){
+      setIsLoggedIn().then(() => dispatch({type: SET_LOGGED_IN, payload: true}))
+      setStatus().then(() => dispatch({type: GET_STATUS, payload: 'therapist'}))
       navigate('/therProf')
-      alert('You are logged in as a ther')
     }
     else {
       alert('Wrong User!!!!!')
     }
   }
+
+  const handleGoogleClick = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      setProf(codeResponse)
+    },
+    onError: (error) => console.log('Login Failed:', error)
+  });
 
   return (
     <div className="min-h-screen text-gray-900 flex justify-center">
@@ -82,7 +111,7 @@ export const SignUp = () => {
                   </button>
                 </form>
                 <p className='mb-5'>Or</p>
-                <GoogleLogin onSuccess={responseMessage} onError={errorMessage} useOneTap={false} containerProps='height: 56px' text='continue_with' locale='en' width='320px' />
+                <GoogleLogin onSuccess={responseMessage} onError={errorMessage} click_listener={() => handleGoogleClick()} useOneTap={false} containerProps='height: 56px' text='continue_with' locale='en' width='320px' />
                 <p className="mt-6 text-xs text-gray-600 text-center">
                   {`By signing up I agree to Pattug’s  `}
                   <a href="#" className="text-[#7c8cfd]">
@@ -90,7 +119,7 @@ export const SignUp = () => {
                   </a>
                 </p>
                 <p className='mt-6 text-xs text-gray-600 text-center'>{`Already have an account?  `}
-                  <a href="/login" className='text-[#7c8cfd]'>Log In</a>
+                  <Link to="/login" className='text-[#7c8cfd]'>Log In</Link>
                 </p>
               </div>
             </div>

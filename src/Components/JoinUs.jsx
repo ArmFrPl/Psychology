@@ -1,6 +1,7 @@
 import React from 'react';
 import '../Styles/Navbar.css'
 import {useTranslation} from "react-i18next";
+import {Link} from "react-router-dom";
 
 export const JoinUs = () => {
   const { t } = useTranslation();
@@ -38,11 +39,11 @@ export const JoinUs = () => {
           <p className="mb-4 text-left">
             {t('joinus.last')}
           </p>
-          <a href="/joinus/apply">
+          <Link to="/joinus/apply">
             <button className="bg-[#7EC6AD] hover:bg-[#6dad97] w-[185px] h-[60px] mt-8 text-white font-bold py-2 px-4 rounded-full text-[24px] float-left">
               {t('joinus.applyButton')}
             </button>
-          </a>
+          </Link>
         </div>
       </div>
     </>

@@ -9,7 +9,7 @@ const createTcpPool = async config => {
   // Cloud Secret Manager (https://cloud.google.com/secret-manager) to help
   // keep secrets safe.
   const dbConfig = {
-    host: '127.0.0.1', // e.g. '127.0.0.1'
+    host: '34.65.181.147', // e.g. '127.0.0.1'
     port: '3306', // e.g. '3306'
     user: 'dav', // e.g. 'my-db-user'
     password: 'Davo-2001', // e.g. 'my-db-password'

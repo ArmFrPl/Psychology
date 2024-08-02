@@ -61,10 +61,10 @@ export const ContactUs = () => {
         <div className="mt-4 flex items-center flex-col relative bottom-14 left-16">
           <img src="/Images/contactus.png" alt="Hands" className="w-[30rem]" />
           <div className='flex justify-evenly w-[24rem]'>
-            <a href="#"><img src="/Images/facebook.png" alt="fb" className='w-[4.5rem] h-[72px]'/></a>
-            <a href="#"><img src="/Images/insta.png" alt="insta" className='w-[4.5rem] h-[72px]'/></a>
-            <a href="#"><img src="/Images/linkedin.png" alt="linkedin" className='w-[4.5rem] h-[72px]'/></a>
-            <a href="#"><img src="/Images/mail.png" alt="mail" className='w-[4.5rem] h-[72px]'/></a>
+            <a target='_blank' href="#"><img src="/Images/facebook.png" alt="fb" className='w-[4.5rem] h-[72px]'/></a>
+            <a target='_blank' href="#"><img src="/Images/insta.png" alt="insta" className='w-[4.5rem] h-[72px]'/></a>
+            <a target='_blank' href="#"><img src="/Images/linkedin.png" alt="linkedin" className='w-[4.5rem] h-[72px]'/></a>
+            <a target='_blank' href="#"><img src="/Images/mail.png" alt="mail" className='w-[4.5rem] h-[72px]'/></a>
           </div>
         </div>
       </div>
