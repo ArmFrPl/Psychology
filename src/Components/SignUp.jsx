@@ -2,20 +2,19 @@ import React, {useEffect, useState} from "react";
 import '../Styles/Navbar.css';
 import {GoogleLogin, useGoogleLogin} from "@react-oauth/google";
 import {Link, useNavigate} from "react-router-dom";
-import {getGoogleUser, setIsLoggedIn, setStatus} from "../actions";
-import {useDispatch} from "react-redux";
+import {fetchTherapistsData, fetchUsersData, getGoogleUser, setIsLoggedIn, setStatus} from "../actions";
+import {useDispatch, useSelector} from "react-redux";
 import {GET_STATUS, GET_USER, SET_LOGGED_IN} from '../actions/types'
 
 export const SignUp = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [prof, setProf] = useState({})
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   useEffect(
     () => {
-      console.log(prof.access_token)
       if(prof.access_token){
         getGoogleUser(prof).then(user =>{
           dispatch({type: GET_USER, payload: user.payload})
@@ -37,11 +36,11 @@ export const SignUp = () => {
   };
 
   const userProf = {
-    email: 'testUser@gmail.com',
+    email: 'ehakobkekhvyan7@gmail.com',
     password: 'testPass123'
   }
   const therProf = {
-    email: 'testTher@pattug.am',
+    email: 'edgar@pattug.am',
     password: 'testPass123'
   }
 

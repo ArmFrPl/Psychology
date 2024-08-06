@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleDown, faAngleUp, faCalendarDays, faVideo} from "@fortawesome/free-solid-svg-icons";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchUsersData} from "../actions";
 
 const appointments = {
   date: "Sunday June 30, 1PM",
@@ -9,7 +10,9 @@ const appointments = {
 }
 
 export const UserProfile = () => {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.user.user);
+  const st = useSelector(state => state)
   const [showPersonalInfo, setShowPersonalInfo] = useState(true);
   const [editMode, setEditMode] = useState({
     firstName: false,
@@ -24,11 +27,11 @@ export const UserProfile = () => {
   });
   const [isReminderEnabled, setIsReminderEnabled] = useState(false);
   const [isRegularAppointment, setIsRegularAppointment] = useState(false);
-
+  //
   // useEffect(() => {
   //   console.log(st)
-  // })
-  //
+  // });
+
   // const login = useGoogleLogin({
   //   onSuccess: (codeResponse) => setUser(codeResponse),
   //   onError: (error) => console.log('Login Failed:', error)

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import {fetchTherapistsData} from "../actions";
+import {useDispatch, useSelector} from "react-redux";
 
 export const TherapistProfile = () => {
   const [sessLength, setSessLength] = useState('');
@@ -18,11 +20,10 @@ export const TherapistProfile = () => {
     languages: false,
     profileImage: false,
   });
-
   const [therInfo, setTherInfo] = useState({
     firstName: 'Something',
     lastName: 'Something',
-    email: 'something@gmail.com',
+    email: '',
     description:
       'For over a decade, I have provided high-quality care for hundreds of clients who can attest to my focus, diligence, and genuine passion for therapy..',
     approach: 'Existential, CBT',
@@ -34,6 +35,9 @@ export const TherapistProfile = () => {
     sessLength: ['30 min', '45 min', '1 hour'],
     profileImage: 'https://www.georgetown.edu/wp-content/uploads/2022/02/Jkramerheadshot-scaled-e1645036825432-1050x1050-c-default.jpg',
   });
+  // useEffect(() => {
+  //   console.log(st)
+  // });
 
   const togglePersonalInfo = () => {
     setShowPersonalInfo(!showPersonalInfo);
